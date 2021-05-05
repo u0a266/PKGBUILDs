@@ -51,7 +51,8 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make olddefconfig
+  make localmodconfig
+  sed -i "s/CONFIG_PINCTRL_CANNONLAKE=y/CONFIG_PINCTRL_CANNONLAKE=m/" .config
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"

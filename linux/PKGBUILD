@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-alice
-pkgver=5.12.arch1
+pkgver=5.12.1.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -51,7 +51,7 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make localmodconfig
+  make olddefconfig
   sed -i "s/CONFIG_PINCTRL_CANNONLAKE=y/CONFIG_PINCTRL_CANNONLAKE=m/" .config
 
   make -s kernelrelease > version

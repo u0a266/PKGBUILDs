@@ -15,8 +15,9 @@ makedepends=(
 )
 options=('!strip')
 _srcname=archlinux-linux
+srctag2=${pkgver%.*}-${pkgver##*.}
 source=(
-  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
+  "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$srctag2.tar.gz"
   config         # the main kernel config file
 )
 validpgpkeys=(
@@ -24,7 +25,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('SKIP'
+sha256sums=('8dddf576477dd0a1e9f50cfbcc5af4f3ad68b9f3a3a70bd7af8626db7ce73aff'
             'dbe86b866dd0619fc8b9b22e116bb995f8adc0956cbf7e866b2f09b252e22a16')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -32,7 +33,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd $_srcname
+  cd linux-$srctag2
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -57,7 +58,7 @@ prepare() {
 }
 
 build() {
-  cd $_srcname
+  cd linux-$srctag2
   make all
   #make htmldocs
 }
@@ -70,7 +71,7 @@ _package() {
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
-  cd $_srcname
+  cd linux-$srctag2
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -93,7 +94,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
 
-  cd $_srcname
+  cd linux-$srctag2
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
@@ -171,7 +172,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd $_srcname
+  cd linux-$srctag2
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."

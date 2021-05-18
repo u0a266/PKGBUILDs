@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-	install -Dm755 "coreutils-$pkgver/src/cp"  "$pkgdir"/usr/local/bin/cpg
-	install -Dm755 "coreutils-$pkgver/src/mv"  "$pkgdir"/usr/local/bin/mvg
+	install -Dm755 "coreutils-$pkgver/src/cp"  "$pkgdir"/usr/bin/cpg
+	install -Dm755 "coreutils-$pkgver/src/mv"  "$pkgdir"/usr/bin/mvg
 }

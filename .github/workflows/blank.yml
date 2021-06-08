@@ -24,12 +24,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-- name: Build archlinux package
-  uses: u0a266/archlinux-action@master
-  with:
-    packages: >
-      p7zip
-      wine
-    scripts: "makepkg"
+      - name: Build archlinux package
+      uses: u0a266/archlinux-action@master
+         run: cd fzpac-git
+         with:
+           scripts: "makepkg"
 

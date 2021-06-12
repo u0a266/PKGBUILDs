@@ -26,12 +26,24 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: clone aur packages
+
+      - name: Update archlinux
+        run: pacman -Syu git --needed --noconfirm
+
+      - name: Build arch packages
         run: |
-          pacman -Syu git --needed --noconfirm
-          git clone https://aur.archlinux.org/paru-bin.git
-          git clone https://aur.archlinux.org/man-pages-ja.git
-          git clone https://aur.archlinux.org/ttf-hackgen-nerd.git
+          cd fzpac-git
+          git pull
+          makepkg -scC
+          cd man-pages-ja
+          git pull
+          makepkg -scC
+          cd paru-bin
+          git pull
+          makepkg -scC
+          cd ttf-hackgen-nerd
+          git pull
+          makepkg -scC
 
 
 

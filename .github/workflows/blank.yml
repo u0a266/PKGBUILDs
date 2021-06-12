@@ -32,20 +32,20 @@ jobs:
 
       - name: Build arch packages
         run: |
+          git clone https://aur.archlinux.org/fzpac-git.git  
           cd fzpac-git
-          git remote set-url origin https://aur.archlinux.org/fzpac-git.git  
           git pull
           makepkg -scC
+          git clone https://aur.archlinux.org/man-pages-ja.git
           cd man-pages-ja
-          git remote set-url origin https://aur.archlinux.org/man-pages-ja.git
           git pull
           makepkg -scC
+          git clone https://aur.archlinux.org/paru-bin.git  
           cd paru-bin
-          git remote set-url origin https://aur.archlinux.org/paru-bin.git  
           git pull
           makepkg -scC
+          git clone https://aur.archlinux.org/ttf-hackgen-nerd.git  
           cd ttf-hackgen-nerd
-          git remote set-url origin https://aur.archlinux.org/ttf-hackgen-nerd.git  
           git pull
           makepkg -scC
 

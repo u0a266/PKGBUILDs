@@ -28,8 +28,8 @@ jobs:
       - uses: actions/checkout@v2
       - clone aur packages
     run: |
-    git clone https://aur.archlinux.org/paru-bin.git; \
-    git clone https://aur.archlinux.org/man-pages-ja.git; \
+    git clone https://aur.archlinux.org/paru-bin.git
+    git clone https://aur.archlinux.org/man-pages-ja.git
     git clone https://aur.archlinux.org/ttf-hackgen-nerd.git
 
 

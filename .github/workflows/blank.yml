@@ -27,10 +27,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: clone aur packages
-    run: |
-      git clone https://aur.archlinux.org/paru-bin.git
-      git clone https://aur.archlinux.org/man-pages-ja.git
-      git clone https://aur.archlinux.org/ttf-hackgen-nerd.git
+        run: |
+          git clone https://aur.archlinux.org/paru-bin.git
+          git clone https://aur.archlinux.org/man-pages-ja.git
+          git clone https://aur.archlinux.org/ttf-hackgen-nerd.git
 
 
 

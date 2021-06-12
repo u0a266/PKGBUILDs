@@ -1,0 +1,12 @@
+[submodule "ttf-hackgen-nerd"]
+	path = ttf-hackgen-nerd
+	url = https://aur.archlinux.org/ttf-hackgen-nerd.git
+[submodule "fzpac-git"]
+	path = fzpac-git
+	url = https://aur.archlinux.org/fzpac-git
+[submodule "paru-bin"]
+	path = paru-bin
+	url = https://aur.archlinux.org/paru-bin
+[submodule "man-pages-ja"]
+	path = man-pages-ja
+	url = https://aur.archlinux.org/man-pages-ja

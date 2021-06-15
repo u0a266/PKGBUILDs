@@ -31,4 +31,6 @@ jobs:
       - name: Update submodule
         run: |
           git submodule update --remote --merge
+          git add -A
+          git commit -m "[bot] Update submodules"
           git push origin master

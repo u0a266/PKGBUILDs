@@ -38,5 +38,5 @@ jobs:
         run: |
           git submodule update --remote --merge
           git add -A
-          git commit -m "[bot] Update submodules"
-          git push origin master || true
+          git commit -m "[bot] Update submodules" || true
+          git push origin master 

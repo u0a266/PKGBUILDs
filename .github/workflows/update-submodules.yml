@@ -29,4 +29,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Update submodule
-        run: git submodule update --remote --merge
+        run: |
+          git submodule update --remote --merge
+          git push origin master

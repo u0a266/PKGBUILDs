@@ -1,0 +1,20 @@
+pkgname=pacman-hook-search-orphans-pkgs
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Check orphans packages in pacman"
+arch=("any")
+url="https://github.com/u0a266/config"
+license=('custom')
+depends=("pacman" "ncurses")
+source=("search-orphans-packages.hook"
+        "search-orphans-packages.sh")
+
+sha256sums=('2fee6e46efa23adfc90c7712c190b1c3610c6e469f8c19bc94f386f78467e8d4'
+            '04804ffdda3388e3d70cb66dec1c8e057b8fff7e046ddfc3eb98171f430cfe15')
+
+package() {
+	cd "$srcdir"
+	install -Dm644 "search-orphans-packages.hook" "$pkgdir/etc/pacman.d/hooks/search-orphans-packages.hook"
+    install -Dm755 "search-orphans-packages.sh" "$pkgdir/etc/pacman.d/hooks.bin/search-orphans-packages.sh"
+}
+

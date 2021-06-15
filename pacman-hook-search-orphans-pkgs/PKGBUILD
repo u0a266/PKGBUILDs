@@ -10,7 +10,7 @@ source=("search-orphans-packages.hook"
         "search-orphans-packages.sh")
 
 sha256sums=('2fee6e46efa23adfc90c7712c190b1c3610c6e469f8c19bc94f386f78467e8d4'
-            '04804ffdda3388e3d70cb66dec1c8e057b8fff7e046ddfc3eb98171f430cfe15')
+            'b1a262225dacd9af3be6cb637410090cdb85fb1326f7c8af544e32aee10f4cc5')
 
 package() {
 	cd "$srcdir"

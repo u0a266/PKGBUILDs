@@ -66,21 +66,22 @@ jobs:
           sudo mkdir -p /etc/pacman.d
           sudo sh -c 'curl "https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on" | sed s/#S/S/g > /etc/pacman.d/mirrorlist'
           sudo curl "https://raw.githubusercontent.com/u0a266/config/master/etc/pacman.conf" -o /etc/pacman.conf
+          sudo pacman -Syu --noconfirm
 
       - name: Build paru-bin
         run: |
           cd paru-bin
-          makepkg -s --noconfirm
+          makepkg --noconfirm
 
       - name: Build man-pages-ja
         run: |
           cd man-pages-ja
-          makepkg -s --noconfirm
+          makepkg --noconfirm
 
       - name: Build ttf-hackgen-nerd
         run: |
           cd ttf-hackgen-nerd
-          makepkg -s --noconfirm
+          makepkg --noconfirm
 
       - name: Create repo
         run: |

@@ -37,7 +37,7 @@ jobs:
           sudo apt-get -y install --no-install-recommends \
           git pkg-config meson gcc libtool \
           libgpgme-dev libarchive-dev libcurl4-openssl-dev libssl-dev curl \
-          gettext python3 python3-setuptools dash gawk ca-certificates
+          gettext python3 python3-setuptools dash gawk ca-certificates \
           fakeroot bsdtar
 
       # Runs a set of commands using the runners shell

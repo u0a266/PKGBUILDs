@@ -86,6 +86,7 @@ jobs:
       - name: Create repo
         run: |
           mkdir repo
+          ls -a .
           cd repo
           cp ../paru-bin/paru-bin-*-x86_64.pkg.tar.zst ../man-pages-ja/man-pages-ja-*-any.pkg.tar.zst ../ttf-hackgen-nerd/ttf-hackgen-nerd-*-any.pkg.tar.zst .
           repo-add custom.db.tar.gz *.pkg.tar.zst

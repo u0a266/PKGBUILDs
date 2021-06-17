@@ -89,7 +89,7 @@ jobs:
           ls .
           cd repo
           cp ../paru-bin/paru-bin-*-x86_64.pkg.tar.gz ../man-pages-ja/man-pages-ja-*-any.pkg.tar.gz ../ttf-hackgen-nerd/ttf-hackgen-nerd-*-any.pkg.tar.gz .
-          repo-add custom.db.tar.gz *.pkg.tar.zst
+          repo-add custom.db.tar.gz *.pkg.tar.gz
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1

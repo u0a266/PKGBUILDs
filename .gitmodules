@@ -10,3 +10,6 @@
 [submodule "man-pages-ja"]
 	path = man-pages-ja
 	url = https://aur.archlinux.org/man-pages-ja
+[submodule "ttf-firge"]
+	path = ttf-firge
+	url = https://aur.archlinux.org/ttf-firge

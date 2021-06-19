@@ -33,39 +33,14 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install requirements
         run: |
-          sudo apt-get update
-          sudo apt-get -y install --no-install-recommends \
-          git pkg-config meson gcc libtool \
-          libgpgme-dev libarchive-dev libcurl4-openssl-dev libssl-dev curl \
-          gettext python3 python3-setuptools dash gawk ca-certificates \
-          fakeroot libarchive-tools
-
-      # Runs a set of commands using the runners shell
-      - name: Setup pacman
-        run: |
-          git clone https://git.archlinux.org/pacman.git
-          cd pacman
-          git checkout $(git describe --tags --abbrev=0)
-          meson build
-          ninja -C build
-          sudo ninja -C build install
-          export LD_LIBRARY_PATH="/usr/lib64"
-
-      - name: Setup archlinux-keyring
-        run: |
-          git clone https://gitlab.archlinux.org/archlinux/archlinux-keyring
-          cd archlinux-keyring
-          git checkout $(git describe --tags --abbrev=0)
-          sed -i "s|/local||g" Makefile
-          sudo make install
-          sudo pacman-key --init
-          sudo pacman-key --populate archlinux
-
-      - name: Setup pacman
-        run: |
+          sudo apt-get install -y wget fakeroot
+          wget "https://github.com/u0a266/archlinux-tools-deb/releases/download/2021.06.19/pacman-arch_6.0.0_amd64.deb"
+          wget "https://github.com/u0a266/archlinux-tools-deb/releases/download/2021.06.19/archlinux-keyring_20210616_amd64.deb"
+          wget "https://github.com/u0a266/archlinux-tools-deb/releases/download/2021.06.19/arch-install-scripts_24_amd64.deb"
+          wget "https://github.com/u0a266/archlinux-tools-deb/releases/download/2021.06.19/archiso_55_amd64.deb"
+          sudo apt install ./*.deb
           sudo mkdir -p /etc/pacman.d
           sudo sh -c 'curl "https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on" | sed s/#S/S/g > /etc/pacman.d/mirrorlist'
-          sudo curl "https://raw.githubusercontent.com/u0a266/config/master/etc/pacman.conf" -o /etc/pacman.conf
           sudo pacman -Syu --noconfirm
 
       - name: Build paru-bin
@@ -88,8 +63,8 @@ jobs:
           mkdir repo
           ls .
           cd repo
-          cp ../paru-bin/paru-bin-*-x86_64.pkg.tar.gz ../man-pages-ja/man-pages-ja-*-any.pkg.tar.gz ../ttf-hackgen-nerd/ttf-hackgen-nerd-*-any.pkg.tar.gz .
-          repo-add custom.db.tar.gz *.pkg.tar.gz
+          cp ../paru-bin/paru-bin-*-x86_64.pkg.tar.zst ../man-pages-ja/man-pages-ja-*-any.pkg.tar.zst ../ttf-hackgen-nerd/ttf-hackgen-nerd-*-any.pkg.tar.zst .
+          repo-add custom.db.tar.zst *.pkg.tar.zst
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1

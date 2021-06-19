@@ -39,8 +39,9 @@ jobs:
           wget "https://github.com/u0a266/archlinux-tools-deb/releases/download/2021.06.19/arch-install-scripts_24_amd64.deb"
           wget "https://github.com/u0a266/archlinux-tools-deb/releases/download/2021.06.19/archiso_55_amd64.deb"
           sudo apt install ./*.deb
-          sudo mkdir -p /etc/pacman.d
+          sudo mkdir -pv /etc/pacman.d
           sudo sh -c 'curl "https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on" | sed s/#S/S/g > /etc/pacman.d/mirrorlist'
+          sudo mkdir -pv /var/lib/pacman/
           sudo pacman -Syu --noconfirm
 
       - name: Build paru-bin

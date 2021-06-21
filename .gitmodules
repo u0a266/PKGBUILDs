@@ -3,13 +3,13 @@
 	url = https://aur.archlinux.org/ttf-hackgen-nerd.git
 [submodule "fzpac-git"]
 	path = fzpac-git
-	url = https://aur.archlinux.org/fzpac-git
+	url = https://aur.archlinux.org/fzpac-git.git
 [submodule "paru-bin"]
 	path = paru-bin
-	url = https://aur.archlinux.org/paru-bin
+	url = https://aur.archlinux.org/paru-bin.git
 [submodule "man-pages-ja"]
 	path = man-pages-ja
-	url = https://aur.archlinux.org/man-pages-ja
+	url = https://aur.archlinux.org/man-pages-ja.git
 [submodule "ttf-firge"]
 	path = ttf-firge
-	url = https://aur.archlinux.org/ttf-firge
+	url = https://aur.archlinux.org/ttf-firge.git

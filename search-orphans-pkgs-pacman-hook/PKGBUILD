@@ -1,4 +1,4 @@
-pkgname=pacman-hook-search-orphans-pkgs
+pkgname=search-orphans-pkgs-pacman-hook
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Check orphans packages in pacman"

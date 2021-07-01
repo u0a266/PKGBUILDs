@@ -13,6 +13,3 @@
 [submodule "ttf-firge"]
 	path = ttf-firge
 	url = https://aur.archlinux.org/ttf-firge.git
-[submodule "search-orphans-pkgs-pacman-hook"]
-	path = search-orphans-pkgs-pacman-hook
-	url = https://aur.archlinux.org/search-orphans-pkgs-pacman-hook

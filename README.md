@@ -7,3 +7,11 @@ pacman -S --needed base-devel
 # if $pkgver is out of date, update $pkgver and install `pacman-contrib` and run `updpkgsums`
 makepkg -src --skippgpcheck
 ```
+
+`/etc/pacman.conf`
+
+```bash
+[custom]
+Server = https://github.com/u0a266/PKGBUILDs/releases/latest/download
+SigLevel = Never
+```

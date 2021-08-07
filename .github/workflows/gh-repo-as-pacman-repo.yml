@@ -22,6 +22,10 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    container:
+      image: archlinux/archlinux
+      volumes:
+        - /home/runner/work/PKGBUILDs/PKGBUILDs:/tmp/pkgbuilds
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -45,30 +49,23 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install requirements
         run: |
-          sudo apt-get install -y wget curl fakeroot
-          curl -s https://api.github.com/repos/u0a266/archlinux-tools-deb/releases/latest \
-          | grep "browser_download_url.*deb" \
-          | cut -d : -f 2,3 \
-          | tr -d \" \
-          | wget -qi -
-          sudo apt-get -y install -o Dpkg::Options::="--force-overwrite" ./*.deb
-          sudo mkdir -pv /etc/pacman.d
-          sudo sh -c 'curl "https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on" | sed s/#S/S/g > /etc/pacman.d/mirrorlist'
+          pacman -Sy base-devel --needed --noconfirm
+          sed -i "s|exit \$E_ROOT|#exit \$E_ROOT|" /usr/bin/makepkg
 
       - name: Build paru-bin
         run: |
           cd paru-bin
-          makepkg -d --noconfirm
+          makepkg -s --noconfirm
 
       - name: Build man-pages-ja
         run: |
           cd man-pages-ja
-          makepkg -d --noconfirm
+          makepkg -s --noconfirm
 
       - name: Build ttf-hackgen-nerd
         run: |
           cd ttf-hackgen-nerd
-          makepkg -d --noconfirm
+          makepkg -s --noconfirm
 
       - name: Create repo
         run: |

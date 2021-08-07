@@ -34,7 +34,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install requirements
         run: |
-          pacman -Sy base-devel --needed --noconfirm
+          pacman -Sy base-devel git --needed --noconfirm
           sed -i "s|exit \$E_ROOT|#exit \$E_ROOT|" /usr/bin/makepkg
 
       - uses: actions/checkout@v2

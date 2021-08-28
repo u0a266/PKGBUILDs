@@ -71,6 +71,7 @@ jobs:
       - name: Create repo
         run: |
           mkdir repo
+          find . -type f -name "*.pkg.tar.zst" -exec cp {} repo/
           cd repo
           repo-add custom.db.tar.gz *.pkg.tar.zst
 

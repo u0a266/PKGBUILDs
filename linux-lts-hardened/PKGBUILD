@@ -18,7 +18,6 @@ source=(
   https://github.com/anthraxx/linux-hardened/releases/download/$pkgver-hardened$pkgrel/linux-hardened-$pkgver-hardened$pkgrel.patch
   config         # the main kernel config file
 )
-  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -28,8 +27,7 @@ validpgpkeys=(
 sha256sums=('82eae38cc5cd11dd6aaac91c02ff0d006c7bafd6d4cf5c6a791930820a3a91d1'
             'SKIP'
             'c0a15212df86b0f0432fe8f7a08dd2a28a6508b32c008fb2aaee5ba3133fe641'
-            'f4c02a78ed4e2150349be53c35b7b6c3cede7a99fbb976d23e801a94ee8abe0e'
-            )
+            'f4c02a78ed4e2150349be53c35b7b6c3cede7a99fbb976d23e801a94ee8abe0e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

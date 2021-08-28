@@ -66,7 +66,7 @@ jobs:
       - name: Build linux-lts-hardened
         run: |
           cd linux-lts-hardened
-          makepkg -s --noconfirm --skippgpcheck
+          MAKEFLAGS=$(nproc) makepkg -s --noconfirm --skippgpcheck
 
       - name: Create repo
         run: |
